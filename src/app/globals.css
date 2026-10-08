@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand: #f4b400;
+  --color-brand-dark: #d9a000;
+  --color-ink: #1f1f1f;
+  --color-ink-soft: #2d2d2d;
+  --color-surface: #f5f5f5;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #333333;
+  background: #ffffff;
+}
+
+@keyframes marquee-kecil {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.track-marquee {
+  animation: marquee-kecil linear infinite;
+}
+
+/* Konten HTML dari database (body artikel / layanan) */
+.prose-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin: 1.75rem 0 0.75rem;
+}
+.prose-content h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin: 1.5rem 0 0.5rem;
+}
+.prose-content p {
+  color: #555555;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.prose-content ul,
+.prose-content ol {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+.prose-content ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #555555;
+  line-height: 1.7;
+}
+.prose-content ul li::before {
+  content: '\f058';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #f4b400;
+}
+.prose-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+.prose-content ol li {
+  margin-bottom: 0.5rem;
+  color: #555555;
+  line-height: 1.7;
+}
+.prose-content a {
+  color: #f4b400;
+  text-decoration: underline;
+}
