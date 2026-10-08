@@ -41,7 +41,7 @@ export default async function HomePage() {
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-ink/95 to-ink/70" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-40">
           <div className="max-w-3xl">
             <FadeIn y={32}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">

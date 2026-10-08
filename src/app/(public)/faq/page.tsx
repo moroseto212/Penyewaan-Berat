@@ -69,7 +69,7 @@ export default async function FaqPage() {
       <PageHero
         title="Pertanyaan Umum"
         subtitle="Temukan jawaban untuk pertanyaan yang sering diajukan tentang layanan kami."
-        backgroundImage="https://dct.co.id/wp-content/uploads/2023/09/14.-Mengenal-Alat-Berat-Sektor-Tambang-dan-Kegunaannya-DCT-2.jpg"
+        backgroundImage="/images/hero-faq.jpg"
         size="sm"
       />
 

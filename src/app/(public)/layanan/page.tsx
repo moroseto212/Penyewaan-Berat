@@ -53,18 +53,20 @@ export default async function ServicesIndexPage() {
                 <Link
                   key={service.id}
                   href={`/layanan/${service.slug}`}
-                  className="group p-6 sm:p-10 bg-surface rounded-2xl hover:bg-ink transition-all duration-300"
+                  className="group p-8 bg-surface rounded-2xl hover:bg-brand hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 h-full block"
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-brand rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white transition-colors">
-                    <i className={`${service.icon ?? 'fas fa-cogs'} text-xl sm:text-2xl text-ink`} />
+                  <div className="w-16 h-16 bg-brand rounded-2xl flex items-center justify-center mb-6 group-hover:bg-ink transition-colors">
+                    <i
+                      className={`${service.icon ?? 'fas fa-cogs'} text-xl sm:text-2xl text-ink group-hover:text-brand transition-colors`}
+                    />
                   </div>
-                  <h2 className="text-base sm:text-xl font-bold text-ink mb-3 group-hover:text-white transition-colors">
+                  <h2 className="text-base sm:text-xl font-bold text-ink mb-3">
                     {service.title}
                   </h2>
-                  <p className="text-sm sm:text-base text-gray-600 group-hover:text-gray-300 transition-colors mb-4">
+                  <p className="text-sm sm:text-base text-gray-600 group-hover:text-ink/80 transition-colors mb-4">
                     {(service.description ?? '').slice(0, 150)}
                   </p>
-                  <span className="text-xs sm:text-sm font-medium text-brand">
+                  <span className="text-xs sm:text-sm font-medium text-brand group-hover:text-ink">
                     Selengkapnya <i className="fas fa-arrow-right ml-1" />
                   </span>
                 </Link>

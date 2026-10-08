@@ -67,16 +67,16 @@ export default async function EquipmentIndexPage({ searchParams }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-10">
             {/* Filter sidebar */}
-            <aside className="lg:w-64 shrink-0">
-              <div className="bg-surface rounded-2xl p-5 sm:p-6 sticky top-28">
-                <h2 className="text-base sm:text-lg font-bold text-ink mb-5">
+            <aside className="lg:w-60 shrink-0">
+              <div className="bg-surface rounded-2xl p-3 sm:p-4 sticky top-28">
+                <h2 className="text-base font-bold text-ink mb-2.5">
                   <i className="fas fa-filter mr-2 text-brand" />
                   Filter
                 </h2>
 
                 <form action="/katalog-alat" method="GET">
-                  <div className="mb-6">
-                    <label htmlFor="filter-search" className="block text-sm font-medium text-ink mb-2">
+                  <div className="mb-3">
+                    <label htmlFor="filter-search" className="block text-sm font-medium text-ink mb-1.5">
                       Cari
                     </label>
                     <div className="relative">
@@ -86,83 +86,93 @@ export default async function EquipmentIndexPage({ searchParams }: Props) {
                         name="search"
                         defaultValue={search}
                         placeholder="Nama alat..."
-                        className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand transition-colors"
+                        className="w-full pl-9 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-colors"
                       />
-                      <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs" />
                     </div>
                   </div>
 
-                  <div className="mb-6">
+                  <div className="mb-3">
                     <label
                       htmlFor="filter-category"
-                      className="block text-sm font-medium text-ink mb-2"
+                      className="block text-sm font-medium text-ink mb-1.5"
                     >
                       Kategori
                     </label>
-                    <select
-                      id="filter-category"
-                      name="category"
-                      defaultValue={category}
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand transition-colors"
-                    >
-                      <option value="">Semua Kategori</option>
-                      {categories.map((item) => (
-                        <option key={item.id} value={item.slug}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="filter-category"
+                        name="category"
+                        defaultValue={category}
+                        className="w-full px-4 pr-9 py-2 bg-white border border-gray-200 rounded-lg text-sm appearance-none cursor-pointer focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-colors"
+                      >
+                        <option value="">Semua Kategori</option>
+                        {categories.map((item) => (
+                          <option key={item.id} value={item.slug}>
+                            {item.name}
+                          </option>
+                        ))}
+                      </select>
+                      <i className="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xs" />
+                    </div>
                   </div>
 
-                  <fieldset className="mb-6">
-                    <legend className="block text-sm font-medium text-ink mb-3">Status</legend>
-                    <div className="space-y-3">
-                      <label className="flex items-center">
+                  <fieldset className="mb-3">
+                    <legend className="block text-sm font-medium text-ink mb-1.5">Status</legend>
+                    <div className="flex flex-wrap gap-1.5">
+                      <label className="cursor-pointer">
                         <input
                           type="radio"
                           name="status"
                           value=""
                           defaultChecked={!status}
-                          className="border-gray-300 text-brand focus:ring-brand"
+                          className="peer sr-only"
                         />
-                        <span className="ml-3 text-sm text-gray-700">Semua</span>
+                        <span className="inline-flex items-center px-2.5 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-gray-600 transition-all hover:border-brand peer-checked:bg-brand peer-checked:text-ink peer-checked:border-brand peer-focus-visible:ring-2 peer-focus-visible:ring-brand/40">
+                          Semua
+                        </span>
                       </label>
                       {STATUS_OPTIONS.map((option) => (
-                        <label key={option.value} className="flex items-center">
+                        <label key={option.value} className="cursor-pointer">
                           <input
                             type="radio"
                             name="status"
                             value={option.value}
                             defaultChecked={status === option.value}
-                            className="border-gray-300 text-brand focus:ring-brand"
+                            className="peer sr-only"
                           />
-                          <span className="ml-3 text-sm text-gray-700">{option.label}</span>
+                          <span className="inline-flex items-center px-2.5 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-gray-600 transition-all hover:border-brand peer-checked:bg-brand peer-checked:text-ink peer-checked:border-brand peer-focus-visible:ring-2 peer-focus-visible:ring-brand/40">
+                            {option.label}
+                          </span>
                         </label>
                       ))}
                     </div>
                   </fieldset>
 
-                  <div className="mb-6">
-                    <label htmlFor="filter-sort" className="block text-sm font-medium text-ink mb-2">
+                  <div className="mb-3">
+                    <label htmlFor="filter-sort" className="block text-sm font-medium text-ink mb-1.5">
                       Urutkan
                     </label>
-                    <select
-                      id="filter-sort"
-                      name="sort"
-                      defaultValue={sort}
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand transition-colors"
-                    >
-                      {SORTS.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="filter-sort"
+                        name="sort"
+                        defaultValue={sort}
+                        className="w-full px-4 pr-9 py-2 bg-white border border-gray-200 rounded-lg text-sm appearance-none cursor-pointer focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-colors"
+                      >
+                        {SORTS.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                      <i className="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xs" />
+                    </div>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full px-6 py-3.5 bg-brand text-ink font-semibold rounded-lg hover:bg-yellow-400 transition-all"
+                    className="w-full px-6 py-2 bg-brand text-ink text-sm font-semibold rounded-lg hover:bg-yellow-400 transition-all"
                   >
                     <i className="fas fa-search mr-2" />
                     Terapkan Filter
@@ -170,7 +180,7 @@ export default async function EquipmentIndexPage({ searchParams }: Props) {
 
                   <Link
                     href="/katalog-alat"
-                    className="block w-full text-center mt-3 px-6 py-3 bg-white border border-gray-200 text-sm text-gray-500 font-medium rounded-lg hover:bg-gray-50 hover:text-brand transition-all"
+                    className="block w-full text-center mt-1.5 px-6 py-2 bg-white border border-gray-200 text-sm text-gray-500 font-medium rounded-lg hover:bg-gray-50 hover:text-brand transition-all"
                   >
                     <i className="fas fa-undo mr-1" />
                     Reset Filter
